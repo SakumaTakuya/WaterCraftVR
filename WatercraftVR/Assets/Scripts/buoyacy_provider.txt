@@ -1,0 +1,148 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.Collections;
+using Unity.Jobs;
+
+public class BuoyancyProvider : MonoBehaviour 
+{
+	[System.Serializable]
+    private struct BuoyancyCalculateJob : IJobParallelFor
+    {
+		[ReadOnly] public NativeArray<int> StartIndeces; // 対象のメッシュの頂点配列の開始点を記録しておく
+		[ReadOnly] public NativeArray<Vector3> Positions;
+		[ReadOnly] public NativeArray<Vector3> Normals;
+		[ReadOnly] public NativeArray<Vector3> VertexPositions;
+		[ReadOnly, SerializeField] private float _surfaceY;
+		[ReadOnly ,SerializeField] private float _strength;
+
+		[WriteOnly] public NativeArray<Vector3> Forces;
+
+        public void Execute(int index)
+        {
+			var startIndex = StartIndeces[index];
+            var lastIndex = StartIndeces[index + 1];
+			var force = Vector3.zero;
+			for(var i = startIndex; i < lastIndex; i++)
+			{
+				var f = CalculateBuoyancy
+				(
+					Normals[i],
+					VertexPositions[i] + Positions[index]
+				);
+				force += f;
+				//print(f);
+				//Debug.DrawLine(VertexPositions[i] + Positions[index], f + Positions[index], Color.green);
+				//print(force);
+			}
+
+			Forces[index] = force * _strength;
+        }
+
+		private Vector3 CalculateBuoyancy(Vector3 normal, Vector3 position)
+		{
+			return -normal * Mathf.Max(_surfaceY - position.y, 0);
+		}
+    }
+
+	[System.Serializable]
+	private struct JobTargetStruct
+	{
+		public MeshFilter MeshFilter;
+		public Rigidbody Rigidbody;
+	}
+
+	[SerializeField] private JobTargetStruct[] _targets;
+	
+	[SerializeField] private BuoyancyCalculateJob _calculateJob;
+	private JobHandle _jobHandle;
+
+	private void Start()
+	{
+		InitializeJob();
+	}
+
+	private void FixedUpdate()
+	{
+		SubscribeJobs();
+		AttachForce();
+	}
+
+	private void OnDestroy()
+	{
+		DisposeJob();
+	}
+
+	private void InitializeJob()
+	{
+		_calculateJob.StartIndeces = new NativeArray<int>(_targets.Length + 1, Allocator.Persistent);
+		_calculateJob.Positions= new NativeArray<Vector3>(_targets.Length, Allocator.Persistent);
+		_calculateJob.Forces = new NativeArray<Vector3>(_targets.Length, Allocator.Persistent);
+	
+
+		var normals = new List<Vector3>();
+		var vertexes = new List<Vector3>();
+		for(var i = 0; i < _targets.Length; i++)
+		{
+			//法線・頂点インデックスの開始地点及び、オブジェクト位置を格納
+			_calculateJob.StartIndeces[i] = normals.Count;
+
+			//全てのtargetの頂点及び法線を取得する
+			normals.AddRange(_targets[i].MeshFilter.sharedMesh.normals);
+			vertexes.AddRange(_targets[i].MeshFilter.sharedMesh.vertices);
+		}
+
+		//番兵
+		_calculateJob.StartIndeces[_targets.Length] = normals.Count;
+		
+		//取得した法線・頂点を格納
+		_calculateJob.Normals = new NativeArray<Vector3>(normals.Count, Allocator.Persistent);
+		_calculateJob.VertexPositions = new NativeArray<Vector3>(vertexes.Count, Allocator.Persistent);
+		for(var i = 0; i < normals.Count; i++)
+		{
+			_calculateJob.Normals[i] = normals[i];
+			_calculateJob.VertexPositions[i] = vertexes[i];
+
+			// print(normals[i]);
+			// print(vertexes[i]);
+		}	
+	}
+
+	private void SubscribeJobs()
+	{
+		for(var i = 0; i < _targets.Length; i++)
+		{
+			_calculateJob.Positions[i] = _targets[i].Rigidbody.position;
+			// print(_targets[i].Rigidbody.position);
+		}
+
+		_jobHandle = _calculateJob.Schedule(_targets.Length, 0);
+	}
+
+	private void AttachForce()
+	{
+		//計算結果を適応するためにJobの終了を待つ
+		_jobHandle.Complete();
+
+		for(var i = 0; i < _targets.Length; i++)
+		{
+			_targets[i].Rigidbody.AddForce(_calculateJob.Forces[i]);
+			//print(_calculateJob.Forces[i]);
+		}
+			
+	}
+
+	private void DisposeJob()
+	{
+		// print("destory");
+		//Jobが進行している時は削除できない
+		_jobHandle.Complete();
+
+		_calculateJob.StartIndeces.Dispose();
+		_calculateJob.Normals.Dispose();
+		_calculateJob.Positions.Dispose();
+		_calculateJob.VertexPositions.Dispose();
+		_calculateJob.Forces.Dispose();
+	}
+
+}

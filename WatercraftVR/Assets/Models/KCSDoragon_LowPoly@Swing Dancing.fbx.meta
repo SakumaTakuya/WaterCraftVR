@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 879cb6da0926b0645978e38b877fa4be
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: "arms_\u5186\u67F1.005"
+    100002: "belly_\u5186\u67F1"
+    100004: "body_\u5186\u67F1.001"
+    100006: "eyes_\u7403.001"
+    100008: "feet_\u7403"
+    100010: "head_\u5E73\u9762.002"
+    100012: "horn_\u5186\u67F1.002"
+    100014: //RootNode
+    100016: "legs_\u5186\u67F1.003"
+    100018: mixamorig:Head
+    100020: mixamorig:HeadTop_End
+    100022: mixamorig:Hips
+    100024: mixamorig:LeftArm
+    100026: mixamorig:LeftFoot
+    100028: mixamorig:LeftForeArm
+    100030: mixamorig:LeftHand
+    100032: mixamorig:LeftLeg
+    100034: mixamorig:LeftShoulder
+    100036: mixamorig:LeftToe_End
+    100038: mixamorig:LeftToeBase
+    100040: mixamorig:LeftUpLeg
+    100042: mixamorig:Neck
+    100044: mixamorig:RightArm
+    100046: mixamorig:RightFoot
+    100048: mixamorig:RightForeArm
+    100050: mixamorig:RightHand
+    100052: mixamorig:RightLeg
+    100054: mixamorig:RightShoulder
+    100056: mixamorig:RightToe_End
+    100058: mixamorig:RightToeBase
+    100060: mixamorig:RightUpLeg
+    100062: mixamorig:Spine
+    100064: mixamorig:Spine1
+    100066: mixamorig:Spine2
+    100068: "\u7403_\u7403.002"
+    400000: "arms_\u5186\u67F1.005"
+    400002: "belly_\u5186\u67F1"
+    400004: "body_\u5186\u67F1.001"
+    400006: "eyes_\u7403.001"
+    400008: "feet_\u7403"
+    400010: "head_\u5E73\u9762.002"
+    400012: "horn_\u5186\u67F1.002"
+    400014: //RootNode
+    400016: "legs_\u5186\u67F1.003"
+    400018: mixamorig:Head
+    400020: mixamorig:HeadTop_End
+    400022: mixamorig:Hips
+    400024: mixamorig:LeftArm
+    400026: mixamorig:LeftFoot
+    400028: mixamorig:LeftForeArm
+    400030: mixamorig:LeftHand
+    400032: mixamorig:LeftLeg
+    400034: mixamorig:LeftShoulder
+    400036: mixamorig:LeftToe_End
+    400038: mixamorig:LeftToeBase
+    400040: mixamorig:LeftUpLeg
+    400042: mixamorig:Neck
+    400044: mixamorig:RightArm
+    400046: mixamorig:RightFoot
+    400048: mixamorig:RightForeArm
+    400050: mixamorig:RightHand
+    400052: mixamorig:RightLeg
+    400054: mixamorig:RightShoulder
+    400056: mixamorig:RightToe_End
+    400058: mixamorig:RightToeBase
+    400060: mixamorig:RightUpLeg
+    400062: mixamorig:Spine
+    400064: mixamorig:Spine1
+    400066: mixamorig:Spine2
+    400068: "\u7403_\u7403.002"
+    2100000: No Name
+    4300000: "horn_\u5186\u67F1.002"
+    4300002: "belly_\u5186\u67F1"
+    4300004: "body_\u5186\u67F1.001"
+    4300006: "legs_\u5186\u67F1.003"
+    4300008: "head_\u5E73\u9762.002"
+    4300010: "\u7403_\u7403.002"
+    4300012: "arms_\u5186\u67F1.005"
+    4300014: "eyes_\u7403.001"
+    4300016: "feet_\u7403"
+    7400000: mixamo.com
+    9500000: //RootNode
+    13700000: "arms_\u5186\u67F1.005"
+    13700002: "belly_\u5186\u67F1"
+    13700004: "body_\u5186\u67F1.001"
+    13700006: "eyes_\u7403.001"
+    13700008: "feet_\u7403"
+    13700010: "head_\u5E73\u9762.002"
+    13700012: "horn_\u5186\u67F1.002"
+    13700014: "legs_\u5186\u67F1.003"
+    13700016: "\u7403_\u7403.002"
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

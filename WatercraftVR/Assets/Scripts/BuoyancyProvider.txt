@@ -1,0 +1,144 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.Collections;
+using Unity.Jobs;
+using System.Linq;
+
+namespace Waters
+{
+	public class BuoyancyProvider : MonoBehaviour 
+	{
+	// 	[System.Serializable]
+	// 	private struct BuoyancyCalculateJob : IJobParallelFor
+	// 	{
+    //         [ReadOnly] public NativeList<int> StartIndeces;
+    //         [ReadOnly] public NativeList<Vector3> MassPoints;
+    //         [ReadOnly] public NativeArray<Matrix4x4> TRS;
+
+    //         [ReadOnly, SerializeField] private float _surfaceY;
+    //         [ReadOnly, SerializeField] private float _massPointVolume;
+
+	// 	    [WriteOnly] public NativeArray<Vector3> CenterOfBuoyancies;
+    //         [WriteOnly] public NativeArray<float> Volumes;
+
+    //         public void Execute(int index)
+    //         {
+    //             var startIndex = StartIndeces[index];
+    //             var lastIndex = StartIndeces[index + 1];
+                
+    //             var center = Vector3.zero;
+    //             var count = 0;
+
+
+    //             for(var i = startIndex; i < lastIndex; i++)
+    //             {
+    //                 var worldPos = TRS[index].MultiplyPoint3x4(MassPoints[i]);
+
+    //                 if(IsUnderSurface(worldPos))
+    //                 {
+    //                     count++;
+    //                     center += worldPos;
+    //                 }
+    //             }
+
+    //             CenterOfBuoyancies[index] = center;
+    //             Volumes[index] = (float) count / (lastIndex - startIndex + 1) * _massPointVolume;
+    //         }
+
+    //         private bool IsUnderSurface(Vector3 position)
+    //         {
+    //             return position.y < _surfaceY;
+    //         }
+	// 	}
+		
+	// 	[SerializeField] private BuoyancyCalculateJob _calculateJob;
+	// 	private JobHandle _jobHandle;
+
+	// 	private HashSet<FloatingBody> _floatingBodies;
+
+	// 	private void Start()
+	// 	{
+	// 		InitializeJob();
+	// 	}
+
+	// 	private void FixedUpdate()
+	// 	{
+	// 		SubscribeJobs();
+	// 		AttachForce();
+	// 	}
+
+	// 	private void OnDestroy()
+	// 	{
+	// 		DisposeJob();
+	// 	}
+
+	// 	public void AddFloatingBody(FloatingBody body)
+	// 	{
+	// 		_floatingBodies.Add(body);
+	// 		_calculateJob.StartIndeces.Add
+	// 		(
+	// 			_calculateJob.CenterOfBuoyancies.Count()
+	// 		);
+
+	// 	}
+
+	// 	private Vector3[] CalculateMassPoints(Bounds bounds)
+	// 	{
+	// 		throw new System.Exception();
+	// 	}
+
+	// 	private void InitializeJob()
+	// 	{
+	// 		_calculateJob.StartIndeces = new NativeList<int>(_floatingBodies.Count, Allocator.Persistent);
+	// 		_calculateJob.MassPoints = new NativeList<Vector3>(_floatingBodies.Count, Allocator.Persistent);
+	// 	}
+
+	// 	private void SubscribeJobs()
+	// 	{
+	// 		_calculateJob.CenterOfBuoyancies = new NativeArray<Vector3>(_floatingBodies.Count, Allocator.TempJob);
+	// 		_calculateJob.TRS = new NativeArray<Matrix4x4>(_floatingBodies.Count, Allocator.TempJob);
+	// 		_calculateJob.Volumes = new NativeArray<float>(_floatingBodies.Count, Allocator.TempJob);
+			
+	// 		var index = 0;
+	// 		foreach(var body in _floatingBodies)
+	// 		{
+	// 			//_calculateJob.TRS[index] = body.GetTRS();
+	// 		}
+
+	// 		_jobHandle = _calculateJob.Schedule(_floatingBodies.Count, 0);
+	// 	}
+
+	// 	private void AttachForce()
+	// 	{
+	// 		//計算結果を適応するためにJobの終了を待つ
+	// 		_jobHandle.Complete();
+
+	// 		var index = 0;
+	// 		foreach(var body in _floatingBodies)
+	// 		{
+	// 			body.AddBuoyancy
+	// 			(
+	// 				_calculateJob.Volumes[index] * Vector3.up,
+	// 				_calculateJob.CenterOfBuoyancies[index]
+	// 			);
+	// 		}
+			
+	// 		_calculateJob.CenterOfBuoyancies.Dispose();
+	// 		_calculateJob.TRS.Dispose();
+	// 		_calculateJob.Volumes.Dispose();
+	// 	}
+
+	// 	private void DisposeJob()
+	// 	{
+	// 		// print("destory");
+	// 		//Jobが進行している時は削除できない
+	// 		_jobHandle.Complete();
+
+	// 		_calculateJob.StartIndeces.Dispose();
+	// 		_calculateJob.MassPoints.Dispose();
+	// 	}
+
+	// }
+	}
+}
