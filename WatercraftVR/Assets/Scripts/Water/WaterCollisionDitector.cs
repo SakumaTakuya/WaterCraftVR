@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Sakkun.Water
 {
+	//スペルミス : Ditector -> Detector
 	public class WaterCollisionDitector : MonoBehaviour 
 	{
 		[SerializeField] private Camera _targetCamera;
