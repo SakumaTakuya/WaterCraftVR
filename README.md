@@ -1,3 +1,5 @@
 # WaterCraftVR
+学祭向けに作成したゲームです．
 
-[![Image from Gyazo](https://i.gyazo.com/66b3c6759cdd6c93a1c1bddeb5df6fc7.gif)](https://gyazo.com/66b3c6759cdd6c93a1c1bddeb5df6fc7)
+![](https://i.gyazo.com/32df3b3985354a30ee4cff29432fe24b.gif)
+
